@@ -18,14 +18,7 @@ namespace pweb_eCarSharing.Models
 
         [Required]
         public string name { get; set; }
-
-        [StringLength(10, ErrorMessage = "Length must be between 3 and 10", MinimumLength = 3)]
-        [Required]
-        public string username { get; set; }//r->should these be here?
-        [StringLength(10, ErrorMessage = "Length must be between 3 and 10", MinimumLength = 3)]
-        [Required]
-        public string password { get; set; }
-
+        
         [Required]
         public bool isAdmin { get; set; } //true-gets admin privileges//false-gets normal user privileges
 
