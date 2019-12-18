@@ -11,15 +11,19 @@ namespace pweb_eCarSharing.Models
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
-        public Guid ReservationID { get; set; }
-        //foreign key
-        public Guid UserID { get; set; }
-        //fk
-        public Guid VehicleID { get; set; }
-        //fk
-        public Guid startStation { get; set; }
-        //fk
-        public Guid endStation { get; set; }
+        public int ReservationID { get; set; }
+        
+        [ForeignKey("User")]
+        public int UserID { get; set; }
+        
+        [ForeignKey("Vehicle")]
+        public int VehicleID { get; set; }
+        
+        [ForeignKey("CarStation")]
+        public int startStation { get; set; }
+
+        [ForeignKey("CarStation")]
+        public int endStation { get; set; }
 
         //em minutos
         public int predictedUseTime { get; set; }

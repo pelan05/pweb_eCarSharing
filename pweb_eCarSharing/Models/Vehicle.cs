@@ -25,13 +25,16 @@ namespace pweb_eCarSharing.Models
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
-        public Guid VehicleID { get; set; }
-        //foreign k
-        public Guid vehicleOwner { get; set; }
-        //fk
-        public List<Guid> reservationHistory { get; set; }
-        //fk
-        public Guid currentStation { get; set; }
+        public int VehicleID { get; set; }
+
+        [ForeignKey("User")]
+        public int vehicleOwner { get; set; }
+        
+        [ForeignKey("Reservation")]
+        public List<int> reservationHistory { get; set; }
+        
+        [ForeignKey("CarStation")]
+        public int currentStation { get; set; }
 
         [Required]
         public string vehicleType { get; set; }
