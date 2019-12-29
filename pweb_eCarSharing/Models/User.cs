@@ -9,12 +9,12 @@ namespace pweb_eCarSharing.Models
 {
     public class User
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int userID { get; set; }
         
-        [ForeignKey("Reservation")]
+        /*[ForeignKey("Reservation")]
         public List<int> reservationHistory { get; set; }
+        public virtual Reservation Reservation { get; set; }*/
 
         [Required]
         public string name { get; set; }

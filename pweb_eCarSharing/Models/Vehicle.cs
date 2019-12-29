@@ -23,18 +23,20 @@ namespace pweb_eCarSharing.Models
             FOURWHEELED     //4 rodas
         };
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int VehicleID { get; set; }
 
         [ForeignKey("User")]
         public int vehicleOwner { get; set; }
-        
-        [ForeignKey("Reservation")]
+        public virtual  User User { get; set; }
+
+        /*[ForeignKey("Reservation")]
         public List<int> reservationHistory { get; set; }
+        public virtual Reservation Reservation { get; set; }*/
         
         [ForeignKey("CarStation")]
         public int currentStation { get; set; }
+        public virtual  CarStation CarStation { get; set; }
 
         [Required]
         public string vehicleType { get; set; }

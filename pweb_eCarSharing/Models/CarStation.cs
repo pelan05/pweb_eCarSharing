@@ -9,9 +9,8 @@ namespace pweb_eCarSharing.Models
 {
     public class CarStation
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
-        public int stationID { get; set; }
+        public int stationId { get; set; }
 
         [Required]
         [StringLength(15, ErrorMessage = "Length must be between 3 and 15", MinimumLength = 3)]
