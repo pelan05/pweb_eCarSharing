@@ -10,7 +10,6 @@ namespace pweb_eCarSharing.Models
 {
     public class Vehicle
     {
-
         public enum VehicleType
         {
             [Description("Scooter")]
@@ -36,7 +35,7 @@ namespace pweb_eCarSharing.Models
         
         [ForeignKey("CarStation")]
         public int currentStation { get; set; }
-        public virtual  CarStation CarStation { get; set; }
+        public virtual CarStation CarStation { get; set; }
 
         [Required]
         public string vehicleType { get; set; }

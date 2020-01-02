@@ -22,7 +22,7 @@ namespace pweb_eCarSharing.Models
         [Required]
         public bool isAdmin { get; set; } //true-gets admin privileges//false-gets normal user privileges
 
-        public string adress { get; set; }
+        public string address { get; set; }
 
         [DataType(DataType.Date)]
         public DateTime birthDate { get; set; }
