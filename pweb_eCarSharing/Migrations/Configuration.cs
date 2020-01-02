@@ -63,24 +63,21 @@
 
             }
 
+            // FIXME ADD COMPLETE INFORMATION
             // Vehicles
-            /*
             if (context.Vehicles.Count() == 0)
             {
                 var vehicles = new List<Vehicle>
                 {
-                                new Vehicle { vehicleType = Vehicle.VehicleType.BIKE.ToString(), inUse = false, pricePerMinute = 20 },
-                                new Vehicle { vehicleType = Vehicle.VehicleType.FOURWHEELED.ToString(), inUse = true, pricePerMinute = 50 },
-                                new Vehicle { vehicleType = Vehicle.VehicleType.MOTORBIKE.ToString(), inUse = false, pricePerMinute = 10 },
-                                new Vehicle { vehicleType = Vehicle.VehicleType.SCOOTER.ToString(), inUse = true, pricePerMinute = 30 },
-                                new Vehicle { vehicleType = Vehicle.VehicleType.FOURWHEELED.ToString(), inUse = false, pricePerMinute = 20 }
-                        };
-
-                context.Vehicles.Add(new Vehicle { vehicleType = Vehicle.VehicleType.BIKE.ToString(), inUse = false, pricePerMinute = 20 });
-                //context.Vehicles.AddRange(vehicles);
+                                new Vehicle { vehicleOwner = 2, currentStation = 12, vehicleType = Vehicle.VehicleType.BIKE.ToString(), inUse = false, pricePerMinute = 20 },
+                                new Vehicle { vehicleOwner = 2, currentStation = 12, vehicleType = Vehicle.VehicleType.FOURWHEELED.ToString(), inUse = true, pricePerMinute = 50 },
+                                new Vehicle { vehicleOwner = 2, currentStation = 12, vehicleType = Vehicle.VehicleType.MOTORBIKE.ToString(), inUse = false, pricePerMinute = 10 },
+                                new Vehicle { vehicleOwner = 2, currentStation = 12, vehicleType = Vehicle.VehicleType.SCOOTER.ToString(), inUse = true, pricePerMinute = 30 },
+                                new Vehicle { vehicleOwner = 2, currentStation = 12, vehicleType = Vehicle.VehicleType.FOURWHEELED.ToString(), inUse = false, pricePerMinute = 20 }
+                };
+                context.Vehicles.AddRange(vehicles);
                 context.SaveChanges();
             }
-            */
         }
     }
 }
