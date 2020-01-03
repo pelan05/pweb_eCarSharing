@@ -53,10 +53,7 @@ namespace pweb_eCarSharing.Controllers
         public ActionResult RentVehicle()
         {
 
-            /*
-             
-        //
-        // GET: /Manage/AddPhoneNumber
+        /*
         public ActionResult AddPhoneNumber()
         {
             return View();
@@ -85,10 +82,7 @@ namespace pweb_eCarSharing.Controllers
             }
             return RedirectToAction("VerifyPhoneNumber", new { PhoneNumber = model.Number });
         }
-
-             */
-
-
+        */
 
 
             // has to be a post?
