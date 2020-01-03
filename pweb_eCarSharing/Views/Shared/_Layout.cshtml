@@ -25,8 +25,11 @@
                                 <ul style="padding: 0">
                                     <li class="dropdown-item">@Html.ActionLink("Home", "Main", "eCarSharing")</li>
                                     <li class="dropdown-item">@Html.ActionLink("Station List", "CarStationList", "eCarSharing")</li>
-                                    <li class="dropdown-item">@Html.ActionLink("About", "About", "Home")</li>
-                                    <li class="dropdown-item">@Html.ActionLink("Contact", "Contact", "Home")</li>
+                                    <li class="dropdown-item">@Html.ActionLink("Vehicle List", "VehicleList", "eCarSharing")</li>
+                                    <li class="dropdown-item">@Html.ActionLink("Rental Create", "RentVehicle", "eCarSharing")</li>
+                                    <li class="dropdown-item">@Html.ActionLink("Rental List", "ListRentalData", "eCarSharing")</li>
+                                    <li class="dropdown-item">@Html.ActionLink("Rental Edit", "ChangeRentalData", "eCarSharing")</li>
+                                    <li class="dropdown-item">@Html.ActionLink("Statistics", "UsageStats", "eCarSharing")</li>
                                     @if (User.IsInRole("Admin"))
                                     {
                                         <li class="dropdown-item">@Html.ActionLink("Contact", "Contact", "Home")</li>
