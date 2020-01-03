@@ -16,7 +16,7 @@ namespace pweb_eCarSharing
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "eCarSharing", action = "Main", id = UrlParameter.Optional }
             );
         }
     }

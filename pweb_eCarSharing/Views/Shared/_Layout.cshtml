@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title eCarSharing</title>
     @Styles.Render("~/Content/css")
 
 </head>
@@ -23,6 +23,8 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <ul style="padding: 0">
+                                    <li class="dropdown-item">@Html.ActionLink("Home", "Main", "eCarSharing")</li>
+                                    <li class="dropdown-item">@Html.ActionLink("Station List", "CarStationList", "eCarSharing")</li>
                                     <li class="dropdown-item">@Html.ActionLink("About", "About", "Home")</li>
                                     <li class="dropdown-item">@Html.ActionLink("Contact", "Contact", "Home")</li>
                                     @if (User.IsInRole("Admin"))

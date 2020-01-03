@@ -1,0 +1,24 @@
+﻿<div style="display: grid; grid-template-columns: 1fr 1fr 1fr;">
+    <div style="grid-column: span 1;">
+        <label class="usageStatsTitle">Most used car type:</label>
+        <span style="padding: 0.5%">
+            @ViewBag.mostUsedType
+        </span>
+    </div>
+    <div style="grid-column: span 1;">
+        <label class="usageStatsTitle">Most used car station:</label>
+        <span style="padding: 0.5%">
+            @ViewBag.mostUsedStationName
+        </span>
+        <label class="usageStatsTitle">Station Location:</label>
+        <span style="padding: 0.5%">
+            @ViewBag.mostUsedStationLocation
+        </span>
+    </div>
+    <div style="grid-column: span 1;">
+        <label class="usageStatsTitle">Average Rental Time:</label>
+        <span style="padding: 0.5%">
+            @ViewBag.avgUsageTime
+        </span>
+    </div>
+</div>

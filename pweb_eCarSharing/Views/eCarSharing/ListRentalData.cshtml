@@ -1,0 +1,49 @@
+﻿@model IEnumerable<pweb_eCarSharing.Models.Reservation>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.endCarStation.stationCity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.startCarStation.stationCity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vehicle.vehicleType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.predictedUseTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.predictedCost)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.endCarStation.stationCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.startCarStation.stationCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle.vehicleType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.predictedUseTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.predictedCost)
+        </td>
+    </tr>
+}
+
+</table>
