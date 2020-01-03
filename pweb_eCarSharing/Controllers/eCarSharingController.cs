@@ -23,7 +23,8 @@ namespace pweb_eCarSharing.Controllers
             //TODO check list data
             // var userId = User.Identity.GetUserId();
             var carStationList = from m in db.CarStations
-                         select m;
+                                 orderby m.stationCity
+                                 select m;
             return View(carStationList.ToList());
         }
 
