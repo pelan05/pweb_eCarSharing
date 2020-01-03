@@ -26,7 +26,7 @@ namespace pweb_eCarSharing.Models
         public int VehicleID { get; set; }
 
         [ForeignKey("User")]
-        public int vehicleOwner { get; set; }
+        public int? vehicleOwner { get; set; }
         public virtual  User User { get; set; }
 
         /*[ForeignKey("Reservation")]
@@ -34,7 +34,7 @@ namespace pweb_eCarSharing.Models
         public virtual Reservation Reservation { get; set; }*/
         
         [ForeignKey("CarStation")]
-        public int currentStation { get; set; }
+        public int? currentStation { get; set; }
         public virtual CarStation CarStation { get; set; }
 
         [Required]

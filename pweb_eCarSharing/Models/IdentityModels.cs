@@ -21,7 +21,7 @@ namespace pweb_eCarSharing.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("DatabaseConnection3", throwIfV1Schema: false)
         {
         }
 

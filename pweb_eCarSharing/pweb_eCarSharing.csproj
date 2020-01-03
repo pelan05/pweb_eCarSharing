@@ -205,17 +205,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201912291654021_dbStart.cs" />
-    <Compile Include="Migrations\201912291654021_dbStart.designer.cs">
-      <DependentUpon>201912291654021_dbStart.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001021631467_belele.cs" />
-    <Compile Include="Migrations\202001021631467_belele.designer.cs">
-      <DependentUpon>202001021631467_belele.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001021934420_Modelo-Inicial.cs" />
-    <Compile Include="Migrations\202001021934420_Modelo-Inicial.designer.cs">
-      <DependentUpon>202001021934420_Modelo-Inicial.cs</DependentUpon>
+    <Compile Include="Migrations\202001031619125_migration1.cs" />
+    <Compile Include="Migrations\202001031619125_migration1.designer.cs">
+      <DependentUpon>202001031619125_migration1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -410,14 +402,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201912291654021_dbStart.resx">
-      <DependentUpon>201912291654021_dbStart.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001021631467_belele.resx">
-      <DependentUpon>202001021631467_belele.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001021934420_Modelo-Inicial.resx">
-      <DependentUpon>202001021934420_Modelo-Inicial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202001031619125_migration1.resx">
+      <DependentUpon>202001031619125_migration1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

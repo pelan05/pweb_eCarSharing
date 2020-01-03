@@ -7,13 +7,13 @@ namespace pweb_eCarSharing.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.0")]
-    public sealed partial class belele : IMigrationMetadata
+    public sealed partial class migration1 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(belele));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(migration1));
         
         string IMigrationMetadata.Id
         {
-            get { return "202001021631467_belele"; }
+            get { return "202001031619125_migration1"; }
         }
         
         string IMigrationMetadata.Source

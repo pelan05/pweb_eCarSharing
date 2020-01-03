@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class dbStart : DbMigration
+    public partial class migration1 : DbMigration
     {
         public override void Up()
         {
@@ -14,7 +14,7 @@
                         userID = c.Int(nullable: false, identity: true),
                         name = c.String(nullable: false),
                         isAdmin = c.Boolean(nullable: false),
-                        adress = c.String(),
+                        address = c.String(),
                         birthDate = c.DateTime(nullable: false),
                         email = c.String(nullable: false),
                         NIB = c.String(nullable: false, maxLength: 21),
@@ -27,7 +27,7 @@
                     {
                         stationId = c.Int(nullable: false, identity: true),
                         stationCity = c.String(nullable: false, maxLength: 15),
-                        stationAdress = c.String(nullable: false, maxLength: 15),
+                        stationAdress = c.String(nullable: false, maxLength: 50),
                     })
                 .PrimaryKey(t => t.stationId);
             
@@ -38,16 +38,16 @@
                         ReservationID = c.Int(nullable: false, identity: true),
                         UserID = c.Int(nullable: false),
                         VehicleID = c.Int(nullable: false),
-                        idStationIdstart = c.Int(nullable: false),
-                        idStationIdEnd = c.Int(nullable: false),
+                        idStationIdstart = c.Int(),
+                        idStationIdEnd = c.Int(),
                         predictedUseTime = c.Int(nullable: false),
                         predictedCost = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.ReservationID)
-                .ForeignKey("dbo.CarStations", t => t.idStationIdEnd, cascadeDelete: false)
-                .ForeignKey("dbo.CarStations", t => t.idStationIdstart, cascadeDelete: false)
-                .ForeignKey("dbo.Users", t => t.UserID, cascadeDelete: false)
-                .ForeignKey("dbo.Vehicles", t => t.VehicleID, cascadeDelete: false)
+                .ForeignKey("dbo.CarStations", t => t.idStationIdEnd)
+                .ForeignKey("dbo.CarStations", t => t.idStationIdstart)
+                .ForeignKey("dbo.Users", t => t.UserID, cascadeDelete: true)
+                .ForeignKey("dbo.Vehicles", t => t.VehicleID, cascadeDelete: true)
                 .Index(t => t.UserID)
                 .Index(t => t.VehicleID)
                 .Index(t => t.idStationIdstart)
@@ -58,8 +58,8 @@
                 c => new
                     {
                         VehicleID = c.Int(nullable: false, identity: true),
-                        vehicleOwner = c.Int(nullable: false),
-                        currentStation = c.Int(nullable: false),
+                        vehicleOwner = c.Int(),
+                        currentStation = c.Int(),
                         vehicleType = c.String(nullable: false),
                         isSmallSized = c.Boolean(nullable: false),
                         isForTourism = c.Boolean(nullable: false),
@@ -68,8 +68,8 @@
                         remainingBattery = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.VehicleID)
-                .ForeignKey("dbo.CarStations", t => t.currentStation, cascadeDelete: true)
-                .ForeignKey("dbo.Users", t => t.vehicleOwner, cascadeDelete: true)
+                .ForeignKey("dbo.CarStations", t => t.currentStation)
+                .ForeignKey("dbo.Users", t => t.vehicleOwner)
                 .Index(t => t.vehicleOwner)
                 .Index(t => t.currentStation);
             

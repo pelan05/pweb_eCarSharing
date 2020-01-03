@@ -17,7 +17,7 @@ namespace pweb_eCarSharing.Models
         public string stationCity { get; set; }//e.g. Porto
 
         [Required]
-        [StringLength(15, ErrorMessage = "Length must be between 3 and 15", MinimumLength = 3)]
+        [StringLength(50, ErrorMessage = "Length must be between 3 and 50", MinimumLength = 3)]
         public string stationAdress { get; set; }//e.g. Rua Voz dos ridículos, 123
 
     }

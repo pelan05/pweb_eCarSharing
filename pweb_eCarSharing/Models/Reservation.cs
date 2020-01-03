@@ -21,17 +21,17 @@ namespace pweb_eCarSharing.Models
         public virtual Vehicle Vehicle { get; set; }
 
         [ForeignKey("startCarStation")]
-        public int idStationIdstart { get; set; }
+        public int? idStationIdstart { get; set; }
         public virtual CarStation startCarStation  { get; set; }
 
         [ForeignKey("endCarStation")]
-        public int idStationIdEnd { get; set; }
+        public int? idStationIdEnd { get; set; }
         public virtual CarStation endCarStation { get; set; }
 
 
 
         //em minutos
-        //TOSO meter  duas variaveis para inicio e fim de reserva
+        //TODO meter  duas variaveis para inicio e fim de reserva
         public int predictedUseTime { get; set; }
 
         public int predictedCost { get; set; }
