@@ -212,6 +212,10 @@
     <Compile Include="Migrations\202001041505576_migration1.designer.cs">
       <DependentUpon>202001041505576_migration1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202001041703431_migration2.cs" />
+    <Compile Include="Migrations\202001041703431_migration2.designer.cs">
+      <DependentUpon>202001041703431_migration2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CarStation.cs" />
@@ -393,6 +397,7 @@
     <Content Include="Views\Reservation\ChangeRentalData.cshtml" />
     <Content Include="Views\Vehicle\InUseVehicleList.cshtml" />
     <Content Include="Views\Reservation\RentVehicle.cshtml" />
+    <Content Include="Views\Vehicle\AddVehicle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -412,6 +417,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202001041505576_migration1.resx">
       <DependentUpon>202001041505576_migration1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001041703431_migration2.resx">
+      <DependentUpon>202001041703431_migration2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

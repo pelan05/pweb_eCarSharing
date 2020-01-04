@@ -28,7 +28,7 @@ namespace pweb_eCarSharing.Models
 
         [Required]
         [Display(Name = "What will be the vehicle's rental price per minute?")]
-        public float pricePerMinute { get; set; }
+        public int pricePerMinute { get; set; }
 
         [Required]
         [Display(Name = "The vehicle's current battery percentage")]
