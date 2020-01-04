@@ -25,14 +25,15 @@
                                 <ul style="padding: 0">
                                     <li class="dropdown-item">@Html.ActionLink("Home", "Main", "eCarSharing")</li>
                                     <li class="dropdown-item">@Html.ActionLink("Station List", "CarStationList", "CarStation")</li>
-                                    <li class="dropdown-item">@Html.ActionLink("Vehicle List", "VehicleList", "Vehicle")</li>
+                                    <li class="dropdown-item">@Html.ActionLink("Available Vehicles", "AvailableVehicleList", "Vehicle")</li>
+                                    <li class="dropdown-item">@Html.ActionLink("Vehicles In Use", "InUseVehicleList", "Vehicle")</li>
                                     <li class="dropdown-item">@Html.ActionLink("Rental Create", "RentVehicle", "Reservation")</li>
                                     <li class="dropdown-item">@Html.ActionLink("Rental List", "ListRentalData", "Reservation")</li>
                                     <li class="dropdown-item">@Html.ActionLink("Rental Edit", "ChangeRentalData", "Reservation")</li>
                                     <li class="dropdown-item">@Html.ActionLink("Statistics", "UsageStats", "Reservation")</li>
                                     @if (User.IsInRole("Admin"))
                                     {
-                                        <li class="dropdown-item">@Html.ActionLink("Contact", "Contact", "Home")</li>
+                                        <li class="dropdown-item">@Html.ActionLink("", "", "")</li>
                                     }
 
                                 </ul>

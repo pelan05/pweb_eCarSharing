@@ -1,7 +1,9 @@
-﻿using pweb_eCarSharing.Models;
+﻿using Microsoft.AspNet.Identity;
+using pweb_eCarSharing.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -12,45 +14,46 @@ namespace pweb_eCarSharing.Controllers
     {
         ApplicationDbContext db = new ApplicationDbContext();
 
+
+
         public ActionResult RentVehicle()
         {
-
-            /*
-            public ActionResult AddPhoneNumber()
-            {
-                return View();
-            }
-
-            //
-            // POST: /Manage/AddPhoneNumber
-            [HttpPost]
-            [ValidateAntiForgeryToken]
-            public async Task<ActionResult> AddPhoneNumber(AddPhoneNumberViewModel model)
-            {
-                if (!ModelState.IsValid)
-                {
-                    return View(model);
-                }
-                // Generate the token and send it
-                var code = await UserManager.GenerateChangePhoneNumberTokenAsync(User.Identity.GetUserId(), model.Number);
-                if (UserManager.SmsService != null)
-                {
-                    var message = new IdentityMessage
-                    {
-                        Destination = model.Number,
-                        Body = "Your security code is: " + code
-                    };
-                    await UserManager.SmsService.SendAsync(message);
-                }
-                return RedirectToAction("VerifyPhoneNumber", new { PhoneNumber = model.Number });
-            }
-            */
-
-
-            // has to be a post?
-            //TODO rent form
             return View();
         }
+
+        // POST: /Reservation/RentVehicle
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RentVehicle(NewReservationViewModel model)
+        {
+
+            int price = db.Vehicles
+                        .Where(a => a.VehicleID == model.VehicleID)
+                        .Select(a => a.pricePerMinute)
+                        .FirstOrDefault();
+            int id = db.UsersNib
+                        .Where(a => a.userIDstring.Equals(User.Identity.GetUserId()))
+                        .Select(a => a.userNIBID)
+                        .FirstOrDefault();
+            
+
+            _ = db.Reservations.Add( new Reservation
+            {
+                UserNIBID = id,
+                VehicleID = model.VehicleID,
+                idStationIdstart = model.idStationIdstart,
+                idStationIdEnd = model.idStationIdEnd,
+                predictedUseTime = model.predictedUseTime,
+                predictedCost = (price * model.predictedUseTime)
+            });
+
+            return RedirectToAction("ListRentalData");
+        }
+
+
+
+
+
 
         public ActionResult ListRentalData()
         {
@@ -60,11 +63,6 @@ namespace pweb_eCarSharing.Controllers
             return View(reservationList.ToList());
         }
 
-        public ActionResult ChangeRentalData()
-        {
-            //TODO change rent data form
-            return View();
-        }
 
         public ActionResult UsageStats()
         {   //TODO stats logic

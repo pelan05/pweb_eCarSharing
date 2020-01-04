@@ -19,11 +19,27 @@ namespace pweb_eCarSharing.Controllers
             return View();
         }
 
-
-        public ActionResult VehicleList()
+        public ActionResult ChangeVehicleData() 
         {
-            //TODO check list data
+            //TODO
+            return View();
+        }
+
+        public ActionResult AvailableVehicleList()
+        {
+            //TODO format table && add names em vez de ids
             var carList = from m in db.Vehicles
+                          where m.inUse == false
+                          select m;
+            return View(carList.ToList());
+        }
+
+
+        public ActionResult InUseVehicleList()
+        {
+            //TODO format table && add names em vez de ids
+            var carList = from m in db.Vehicles
+                          where m.inUse == true
                           select m;
             return View(carList.ToList());
         }

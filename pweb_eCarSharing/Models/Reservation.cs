@@ -12,9 +12,9 @@ namespace pweb_eCarSharing.Models
         [Key]
         public int ReservationID { get; set; }
         
-        [ForeignKey("User")]
-        public int UserID { get; set; }
-        public virtual User User { get; set; }
+        [ForeignKey("UserNIB")]
+        public int? UserNIBID { get; set; }
+        public virtual UserNIB UserNIB { get; set; }
 
         [ForeignKey("Vehicle")]
         public int VehicleID { get; set; }

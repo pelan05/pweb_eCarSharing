@@ -13,8 +13,8 @@ namespace pweb_eCarSharing.Models
         public enum VehicleType
         {
             [Description("Scooter")]
-            SCOOTER,            //trotinete
-            [Description("Bicicle")]
+            SCOOTER,        //trotinete
+            [Description("Bicycle")]
             BIKE,           //biciclete
             [Description("Motorbike")]
             MOTORBIKE,      //motociclo
@@ -25,9 +25,9 @@ namespace pweb_eCarSharing.Models
         [Key]
         public int VehicleID { get; set; }
 
-        [ForeignKey("User")]
+        [ForeignKey("UserNIB")]
         public int? vehicleOwner { get; set; }
-        public virtual  User User { get; set; }
+        public virtual UserNIB UserNIB { get; set; }
 
         /*[ForeignKey("Reservation")]
         public List<int> reservationHistory { get; set; }
@@ -48,7 +48,7 @@ namespace pweb_eCarSharing.Models
         public bool inUse { get; set; }
 
         [Required]
-        public float pricePerMinute { get; set; }
+        public int pricePerMinute { get; set; }
 
         [Range(0, 100)]
         public int remainingBattery { get; set; } //0-100, carrega nas carstations

@@ -32,7 +32,7 @@ namespace pweb_eCarSharing.Models
         public DbSet<CarStation> CarStations { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
-        public DbSet <User> AppUsers { get; set; }
+        public DbSet <UserNIB> UsersNib { get; set; }
         
 
     }

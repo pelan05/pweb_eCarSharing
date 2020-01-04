@@ -8,20 +8,6 @@
         public override void Up()
         {
             CreateTable(
-                "dbo.Users",
-                c => new
-                    {
-                        userID = c.Int(nullable: false, identity: true),
-                        name = c.String(nullable: false),
-                        isAdmin = c.Boolean(nullable: false),
-                        address = c.String(),
-                        birthDate = c.DateTime(nullable: false),
-                        email = c.String(nullable: false),
-                        NIB = c.String(nullable: false, maxLength: 21),
-                    })
-                .PrimaryKey(t => t.userID);
-            
-            CreateTable(
                 "dbo.CarStations",
                 c => new
                     {
@@ -36,7 +22,7 @@
                 c => new
                     {
                         ReservationID = c.Int(nullable: false, identity: true),
-                        UserID = c.Int(nullable: false),
+                        UserNIBID = c.Int(),
                         VehicleID = c.Int(nullable: false),
                         idStationIdstart = c.Int(),
                         idStationIdEnd = c.Int(),
@@ -46,12 +32,22 @@
                 .PrimaryKey(t => t.ReservationID)
                 .ForeignKey("dbo.CarStations", t => t.idStationIdEnd)
                 .ForeignKey("dbo.CarStations", t => t.idStationIdstart)
-                .ForeignKey("dbo.Users", t => t.UserID, cascadeDelete: true)
+                .ForeignKey("dbo.UserNIBs", t => t.UserNIBID)
                 .ForeignKey("dbo.Vehicles", t => t.VehicleID, cascadeDelete: true)
-                .Index(t => t.UserID)
+                .Index(t => t.UserNIBID)
                 .Index(t => t.VehicleID)
                 .Index(t => t.idStationIdstart)
                 .Index(t => t.idStationIdEnd);
+            
+            CreateTable(
+                "dbo.UserNIBs",
+                c => new
+                    {
+                        userNIBID = c.Int(nullable: false, identity: true),
+                        userIDstring = c.String(),
+                        NIB = c.String(nullable: false, maxLength: 21),
+                    })
+                .PrimaryKey(t => t.userNIBID);
             
             CreateTable(
                 "dbo.Vehicles",
@@ -64,12 +60,12 @@
                         isSmallSized = c.Boolean(nullable: false),
                         isForTourism = c.Boolean(nullable: false),
                         inUse = c.Boolean(nullable: false),
-                        pricePerMinute = c.Single(nullable: false),
+                        pricePerMinute = c.Int(nullable: false),
                         remainingBattery = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.VehicleID)
                 .ForeignKey("dbo.CarStations", t => t.currentStation)
-                .ForeignKey("dbo.Users", t => t.vehicleOwner)
+                .ForeignKey("dbo.UserNIBs", t => t.vehicleOwner)
                 .Index(t => t.vehicleOwner)
                 .Index(t => t.currentStation);
             
@@ -150,9 +146,9 @@
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.Reservations", "VehicleID", "dbo.Vehicles");
-            DropForeignKey("dbo.Vehicles", "vehicleOwner", "dbo.Users");
+            DropForeignKey("dbo.Vehicles", "vehicleOwner", "dbo.UserNIBs");
             DropForeignKey("dbo.Vehicles", "currentStation", "dbo.CarStations");
-            DropForeignKey("dbo.Reservations", "UserID", "dbo.Users");
+            DropForeignKey("dbo.Reservations", "UserNIBID", "dbo.UserNIBs");
             DropForeignKey("dbo.Reservations", "idStationIdstart", "dbo.CarStations");
             DropForeignKey("dbo.Reservations", "idStationIdEnd", "dbo.CarStations");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
@@ -166,16 +162,16 @@
             DropIndex("dbo.Reservations", new[] { "idStationIdEnd" });
             DropIndex("dbo.Reservations", new[] { "idStationIdstart" });
             DropIndex("dbo.Reservations", new[] { "VehicleID" });
-            DropIndex("dbo.Reservations", new[] { "UserID" });
+            DropIndex("dbo.Reservations", new[] { "UserNIBID" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.Vehicles");
+            DropTable("dbo.UserNIBs");
             DropTable("dbo.Reservations");
             DropTable("dbo.CarStations");
-            DropTable("dbo.Users");
         }
     }
 }
