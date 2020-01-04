@@ -199,9 +199,12 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CarStationController.cs" />
     <Compile Include="Controllers\eCarSharingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ReservationController.cs" />
+    <Compile Include="Controllers\VehicleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -380,12 +383,12 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\eCarSharing\Main.cshtml" />
-    <Content Include="Views\eCarSharing\CarStationList.cshtml" />
-    <Content Include="Views\eCarSharing\VehicleList.cshtml" />
-    <Content Include="Views\eCarSharing\RentVehicle.cshtml" />
-    <Content Include="Views\eCarSharing\ListRentalData.cshtml" />
-    <Content Include="Views\eCarSharing\UsageStats.cshtml" />
-    <Content Include="Views\eCarSharing\ChangeRentalData.cshtml" />
+    <Content Include="Views\CarStation\CarStationList.cshtml" />
+    <Content Include="Views\Vehicle\VehicleList.cshtml" />
+    <Content Include="Views\Reservation\RentVehicle.cshtml" />
+    <Content Include="Views\Reservation\ListRentalData.cshtml" />
+    <Content Include="Views\Reservation\UsageStats.cshtml" />
+    <Content Include="Views\Reservation\ChangeRentalData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
