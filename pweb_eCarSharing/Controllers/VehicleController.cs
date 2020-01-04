@@ -103,7 +103,26 @@ namespace pweb_eCarSharing.Controllers
         }
 
 
+        public ActionResult RemVehicle()
+        {
+            return View(new RemVehicleViewModel());
+        }
 
+        // POST: /Vehicle/RemVehicle
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RemVehicle(RemVehicleViewModel model)
+        {
+            var oldInfo = db.Vehicles
+                        .Where(a => a.VehicleID == model.vehicleID)
+                        .Select(a => a)
+                        .FirstOrDefault();
+            if (!(oldInfo == null)){
+                db.Vehicles.Remove(oldInfo);
+                db.SaveChanges();
+            }
+            return RedirectToAction("AvailableVehicleList");
+        }
 
 
     }

@@ -394,7 +394,6 @@
     <Content Include="Views\Vehicle\AvailableVehicleList.cshtml" />
     <Content Include="Views\Reservation\ListRentalData.cshtml" />
     <Content Include="Views\Reservation\UsageStats.cshtml" />
-    <Content Include="Views\Reservation\ChangeRentalData.cshtml" />
     <Content Include="Views\Vehicle\InUseVehicleList.cshtml" />
     <Content Include="Views\Reservation\RentVehicle.cshtml" />
     <Content Include="Views\Vehicle\AddVehicle.cshtml" />
@@ -403,6 +402,10 @@
     <Content Include="Views\eCarSharing\Vehicle.cshtml" />
     <Content Include="Views\eCarSharing\CarStation.cshtml" />
     <Content Include="Views\eCarSharing\Reservation.cshtml" />
+    <Content Include="Views\Reservation\ChangeRentalData.cshtml" />
+    <Content Include="Views\CarStation\RemCarStation.cshtml" />
+    <Content Include="Views\Vehicle\RemVehicle.cshtml" />
+    <Content Include="Views\Reservation\RemRentalData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

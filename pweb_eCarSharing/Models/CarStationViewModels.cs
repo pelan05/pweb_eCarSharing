@@ -18,4 +18,11 @@ namespace pweb_eCarSharing.Models
         [Display(Name = "The Adress where it is at:")]
         public string stationAdress { get; set; }
     }
+
+    public class RemCarStationViewModel
+    { 
+        [Required]
+        [Display(Name = "The id of the Station to remove")]
+        public int stationID { get; set; }
+    }
 }

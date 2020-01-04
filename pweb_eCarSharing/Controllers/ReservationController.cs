@@ -56,16 +56,51 @@ namespace pweb_eCarSharing.Controllers
             return RedirectToAction("ListRentalData");
         }
 
-        public ActionResult ChangeRentalData()
+
+        public ActionResult RemRentalData()
         {
-            return View(new NewReservationViewModel());
+            return View(new RemReservationViewModel());
         }
 
-        // POST: /Reservation/RentVehicle
+        // POST: /Reservation/RemRentalData
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ChangeRentalData(NewReservationViewModel model)
+        public ActionResult RemRentalData(RemReservationViewModel model)
         {
+
+            var oldInfo = db.Reservations
+                        .Where(a => a.ReservationID == model.reservationID)
+                        .Select(a => a)
+                        .FirstOrDefault();
+            if (!(oldInfo == null)) { 
+             
+            db.Reservations.Remove(oldInfo);
+
+            db.SaveChanges();
+
+            }
+            return RedirectToAction("ListRentalData");
+        }
+
+        
+        public ActionResult ChangeRentalData()
+        {
+            return View(new EditReservationViewModel());
+        }
+
+        // POST: /Reservation/ChangeRentalData
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangeRentalData(EditReservationViewModel model)
+        {
+
+            var oldInfo = db.Reservations
+                        .Where(a => a.ReservationID == model.ReservationID)
+                        .Select(a => a)
+                        .FirstOrDefault();
+
+            db.Reservations.Remove(oldInfo);
+
 
             int price = db.Vehicles
                         .Where(a => a.VehicleID == model.VehicleID)
@@ -81,7 +116,6 @@ namespace pweb_eCarSharing.Controllers
                         .Select(a => a.userNIBID)
                         .FirstOrDefault();
 
-
             _ = db.Reservations.Add(new Reservation
             {
                 UserNIBID = id,
@@ -95,7 +129,8 @@ namespace pweb_eCarSharing.Controllers
 
             return RedirectToAction("ListRentalData");
         }
-        
+
+
 
 
 

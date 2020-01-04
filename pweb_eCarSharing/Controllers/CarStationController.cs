@@ -40,7 +40,26 @@ namespace pweb_eCarSharing.Controllers
         }
 
 
+        public ActionResult RemCarStation()
+        {
+            return View(new RemCarStationViewModel());
+        }
+        // POST: /CarStation/RemCarStation
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RemCarStation(RemCarStationViewModel model)
+        {
 
+            var oldInfo = db.CarStations
+                       .Where(a => a.stationId == model.stationID)
+                       .Select(a => a)
+                       .FirstOrDefault();
+            if (!(oldInfo == null)){
+                db.CarStations.Remove(oldInfo);
+                db.SaveChanges();
+            }
+            return RedirectToAction("CarStationList");
+        }
 
     }
 }

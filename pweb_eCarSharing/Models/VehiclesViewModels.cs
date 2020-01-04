@@ -45,4 +45,11 @@ namespace pweb_eCarSharing.Models
         [Display(Name = "Vehicle's new price")]
         public int pricePerMinute { get; set; }
     }
+
+    public class RemVehicleViewModel
+    {
+        [Required]
+        [Display(Name = "Id of the vehicle to remove")]
+        public int vehicleID { get; set; }
+    }
 }
