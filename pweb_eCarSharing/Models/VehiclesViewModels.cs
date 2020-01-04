@@ -38,11 +38,11 @@ namespace pweb_eCarSharing.Models
     public class changeVehiclePriceViewModel
     {
         [Required]
-        [Display(Name = "Vehicle's ID number")]
-        public int vehicleID;
+        [Display(Name = "Target Vehicle's ID number")]
+        public int vehicleID { get; set; }
 
         [Required]
         [Display(Name = "Vehicle's new price")]
-        public float pricePerMinute { get; set; }
+        public int pricePerMinute { get; set; }
     }
 }

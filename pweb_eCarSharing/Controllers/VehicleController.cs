@@ -46,10 +46,41 @@ namespace pweb_eCarSharing.Controllers
             return RedirectToAction("AvailableVehicleList");
         }
 
-            public ActionResult ChangeVehicleData() 
+        public ActionResult ChangeVehicleData()
         {
-            //TODO
-            return View();
+            return View(new changeVehiclePriceViewModel());
+        }
+
+        // POST: /Vehicle/ChangeVehicleData
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangeVehicleData(changeVehiclePriceViewModel model)
+        {
+            var oldInfo = db.Vehicles
+                        .Where(a => a.VehicleID == model.vehicleID)
+                        .Select(a => a)
+                        .FirstOrDefault();
+
+            var newInfo = oldInfo;
+            newInfo.pricePerMinute = model.pricePerMinute;
+            newInfo.vehicleOwner = oldInfo.vehicleOwner;
+            newInfo.currentStation = oldInfo.currentStation;
+
+            db.Vehicles.Remove(oldInfo);
+            _ = db.Vehicles.Add(new Vehicle {
+                vehicleOwner = newInfo.vehicleOwner,
+                currentStation = newInfo.currentStation,
+                vehicleType = newInfo.vehicleType,
+                isSmallSized = newInfo.isSmallSized,
+                isForTourism = newInfo.isForTourism,
+                inUse = newInfo.inUse,
+                pricePerMinute = newInfo.pricePerMinute,
+                remainingBattery = newInfo.remainingBattery
+            });
+
+            db.SaveChanges();
+
+            return RedirectToAction("AvailableVehicleList");
         }
 
         public ActionResult AvailableVehicleList()
