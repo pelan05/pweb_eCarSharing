@@ -1,0 +1,22 @@
+﻿<div style="display:grid; grid-template-rows: 1fr 1fr 1fr 1fr; grid-template-columns: 1fr 1fr 1fr; grid-column-gap: 20px; grid-row-gap: 20px;">
+    <div class="jumbotron" style="grid-column: 2; grid-row: 1; text-align: center; padding: 25px 25px; margin: 0;">
+
+        @Html.ActionLink("Rental Requests List", "ListRentalData", "Reservation")
+
+    </div>
+    <div class="jumbotron" style="grid-column: 2; grid-row: 2; text-align: center; padding: 25px 25px; margin: 0;">
+
+        @Html.ActionLink("New Rental Request", "RentVehicle", "Reservation")
+
+    </div>
+    <div class="jumbotron" style="grid-column: 2; grid-row: 3; text-align: center; padding: 25px 25px; margin: 0;">
+
+        @Html.ActionLink("Edit Rental Request", "ChangeRentalData", "Reservation")
+
+    </div>
+    <div class="jumbotron" style="grid-column: 2; grid-row: 4; text-align: center; padding: 25px 25px; margin: 0;">
+
+        @Html.ActionLink("Usage Statistics", "UsageStats", "Reservation")
+
+    </div>
+</div>

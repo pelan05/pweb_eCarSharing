@@ -14,9 +14,20 @@ namespace pweb_eCarSharing.Controllers
         // GET: eCarSharing
         public ActionResult Main()
         {
-            //TODO fill with sample text
             return View();
         }
 
+        public ActionResult Vehicle()
+        {
+            return View();
+        }
+        public ActionResult CarStation()
+        {
+            return View();
+        }
+        public ActionResult Reservation()
+        {
+            return View();
+        }
     }
 }

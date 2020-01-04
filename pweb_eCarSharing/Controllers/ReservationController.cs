@@ -56,8 +56,46 @@ namespace pweb_eCarSharing.Controllers
             return RedirectToAction("ListRentalData");
         }
 
+        public ActionResult ChangeRentalData()
+        {
+            return View(new NewReservationViewModel());
+        }
+
+        // POST: /Reservation/RentVehicle
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangeRentalData(NewReservationViewModel model)
+        {
+
+            int price = db.Vehicles
+                        .Where(a => a.VehicleID == model.VehicleID)
+                        .Select(a => a.pricePerMinute)
+                        .FirstOrDefault();
+            int? stationStart = db.Vehicles
+                        .Where(a => a.VehicleID == model.VehicleID)
+                        .Select(a => a.currentStation)
+                        .FirstOrDefault();
+            var userID = User.Identity.GetUserId();
+            int id = db.UsersNib
+                        .Where(a => a.userIDstring.Equals(userID))
+                        .Select(a => a.userNIBID)
+                        .FirstOrDefault();
 
 
+            _ = db.Reservations.Add(new Reservation
+            {
+                UserNIBID = id,
+                VehicleID = model.VehicleID,
+                idStationIdstart = stationStart,
+                idStationIdEnd = model.idStationIdEnd,
+                predictedUseTime = model.predictedUseTime,
+                predictedCost = (price * model.predictedUseTime)
+            });
+            db.SaveChanges();
+
+            return RedirectToAction("ListRentalData");
+        }
+        
 
 
 
