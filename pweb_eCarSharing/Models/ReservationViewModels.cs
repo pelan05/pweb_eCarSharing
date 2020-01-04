@@ -7,16 +7,11 @@ using System.Web;
 namespace pweb_eCarSharing.Models
 {
     public class NewReservationViewModel // modelo para informação de formulário
-    {
-        [Key]
+    {   
         [Required]
         [Display(Name = "Desired Vehicle's ID number")]
         public int VehicleID { get; set; }
-        
-        [Required]
-        [Display(Name = "Desired Vehicle's current station ID")]
-        public int idStationIdstart { get; set; }
-        
+                
         [Required]
         [Display(Name = "Desired Vehicle's delivery station ID")]
         public int idStationIdEnd { get; set; }

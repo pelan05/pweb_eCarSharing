@@ -13,7 +13,7 @@ namespace pweb_eCarSharing.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202001041115438_migration1"; }
+            get { return "202001041505576_migration1"; }
         }
         
         string IMigrationMetadata.Source

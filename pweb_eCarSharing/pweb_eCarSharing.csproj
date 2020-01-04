@@ -208,9 +208,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202001041115438_migration1.cs" />
-    <Compile Include="Migrations\202001041115438_migration1.designer.cs">
-      <DependentUpon>202001041115438_migration1.cs</DependentUpon>
+    <Compile Include="Migrations\202001041505576_migration1.cs" />
+    <Compile Include="Migrations\202001041505576_migration1.designer.cs">
+      <DependentUpon>202001041505576_migration1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -392,6 +392,7 @@
     <Content Include="Views\Reservation\UsageStats.cshtml" />
     <Content Include="Views\Reservation\ChangeRentalData.cshtml" />
     <Content Include="Views\Vehicle\InUseVehicleList.cshtml" />
+    <Content Include="Views\Reservation\RentVehicle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -409,8 +410,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202001041115438_migration1.resx">
-      <DependentUpon>202001041115438_migration1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202001041505576_migration1.resx">
+      <DependentUpon>202001041505576_migration1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

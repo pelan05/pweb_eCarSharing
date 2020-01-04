@@ -8,11 +8,6 @@ namespace pweb_eCarSharing.Models
 {
     public class AddCarStationViewModel // modelo para informação de formulário
     {
-        [Key]
-        [Required]
-        [Display(Name = "CarStation's ID number")]
-        public int CarStationID { get; set; }
-
         [Required]
         [StringLength(15, ErrorMessage = "Length must be between 3 and 15", MinimumLength = 3)]
         [Display(Name = "In what city is the station?")]

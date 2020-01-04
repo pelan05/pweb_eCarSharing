@@ -18,7 +18,7 @@ namespace pweb_eCarSharing.Controllers
 
         public ActionResult RentVehicle()
         {
-            return View();
+            return View(new NewReservationViewModel());
         }
 
         // POST: /Reservation/RentVehicle
@@ -31,8 +31,13 @@ namespace pweb_eCarSharing.Controllers
                         .Where(a => a.VehicleID == model.VehicleID)
                         .Select(a => a.pricePerMinute)
                         .FirstOrDefault();
+            int? stationStart = db.Vehicles
+                        .Where(a => a.VehicleID == model.VehicleID)
+                        .Select(a => a.currentStation)
+                        .FirstOrDefault();
+            var userID = User.Identity.GetUserId();
             int id = db.UsersNib
-                        .Where(a => a.userIDstring.Equals(User.Identity.GetUserId()))
+                        .Where(a => a.userIDstring.Equals(userID))
                         .Select(a => a.userNIBID)
                         .FirstOrDefault();
             
@@ -41,11 +46,12 @@ namespace pweb_eCarSharing.Controllers
             {
                 UserNIBID = id,
                 VehicleID = model.VehicleID,
-                idStationIdstart = model.idStationIdstart,
+                idStationIdstart = stationStart,
                 idStationIdEnd = model.idStationIdEnd,
                 predictedUseTime = model.predictedUseTime,
                 predictedCost = (price * model.predictedUseTime)
             });
+            db.SaveChanges();
 
             return RedirectToAction("ListRentalData");
         }
