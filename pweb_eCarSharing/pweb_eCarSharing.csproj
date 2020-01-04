@@ -212,17 +212,9 @@
     <Compile Include="Migrations\202001041505576_migration1.designer.cs">
       <DependentUpon>202001041505576_migration1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202001041703431_migration2.cs" />
-    <Compile Include="Migrations\202001041703431_migration2.designer.cs">
-      <DependentUpon>202001041703431_migration2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001041739212_migration3.cs" />
-    <Compile Include="Migrations\202001041739212_migration3.designer.cs">
-      <DependentUpon>202001041739212_migration3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001041933380_migration4.cs" />
-    <Compile Include="Migrations\202001041933380_migration4.designer.cs">
-      <DependentUpon>202001041933380_migration4.cs</DependentUpon>
+    <Compile Include="Migrations\202001042017241_migration2.cs" />
+    <Compile Include="Migrations\202001042017241_migration2.designer.cs">
+      <DependentUpon>202001042017241_migration2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -407,6 +399,7 @@
     <Content Include="Views\Reservation\RentVehicle.cshtml" />
     <Content Include="Views\Vehicle\AddVehicle.cshtml" />
     <Content Include="Views\Vehicle\ChangeVehicleData.cshtml" />
+    <Content Include="Views\CarStation\AddCarStation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -427,14 +420,8 @@
     <EmbeddedResource Include="Migrations\202001041505576_migration1.resx">
       <DependentUpon>202001041505576_migration1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001041703431_migration2.resx">
-      <DependentUpon>202001041703431_migration2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001041739212_migration3.resx">
-      <DependentUpon>202001041739212_migration3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001041933380_migration4.resx">
-      <DependentUpon>202001041933380_migration4.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202001042017241_migration2.resx">
+      <DependentUpon>202001042017241_migration2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

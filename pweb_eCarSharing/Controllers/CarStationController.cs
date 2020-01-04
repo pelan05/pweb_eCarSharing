@@ -1,4 +1,5 @@
-﻿using pweb_eCarSharing.Models;
+﻿using Microsoft.AspNet.Identity;
+using pweb_eCarSharing.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +14,6 @@ namespace pweb_eCarSharing.Controllers
         ApplicationDbContext db = new ApplicationDbContext();
         public ActionResult CarStationList()
         {
-            //TODO check list data
-            // var userId = User.Identity.GetUserId();
             var carStationList = from m in db.CarStations
                                  orderby m.stationCity
                                  select m;
@@ -23,9 +22,21 @@ namespace pweb_eCarSharing.Controllers
 
         public ActionResult AddCarStation()
         {
-            //TODO add view
-            //TODO check list data
-            return View();
+            return View(new AddCarStationViewModel());
+        }
+        // POST: /CarStation/AddCarStation
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddCarStation(AddCarStationViewModel model)
+        {
+            _ = db.CarStations.Add(new CarStation
+            {
+                stationCity = model.stationCity,
+                stationAdress = model.stationAdress
+            });
+            db.SaveChanges();
+
+            return RedirectToAction("CarStationList");
         }
 
 
