@@ -8,8 +8,13 @@ namespace pweb_eCarSharing.Models
 {
     public class NewVehicleViewModel // modelo para informação de formulário
     {
+        [Key]
         [Required]
         [Display(Name = "Vehicle's ID number")]
+        public int vehicleID { get; set; }
+
+        [Required]
+        [Display(Name = "Vehicle's current station ID number")]
         public int? currentStationId { get; set; }
 
         [Required]
@@ -36,6 +41,7 @@ namespace pweb_eCarSharing.Models
 
     public class changeVehiclePriceViewModel
     {
+        [Key]
         [Required]
         [Display(Name = "Vehicle's ID number")]
         public int vehicleID;

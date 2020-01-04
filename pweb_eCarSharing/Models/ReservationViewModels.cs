@@ -8,6 +8,7 @@ namespace pweb_eCarSharing.Models
 {
     public class NewReservationViewModel // modelo para informação de formulário
     {
+        [Key]
         [Required]
         [Display(Name = "Desired Vehicle's ID number")]
         public int VehicleID { get; set; }
