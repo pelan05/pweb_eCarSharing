@@ -51,6 +51,7 @@ namespace pweb_eCarSharing.Controllers
 
         public ActionResult ChangeVehicleData()
         {
+            ViewBag.error = false;
             return View(new changeVehiclePriceViewModel());
         }
 
@@ -64,9 +65,15 @@ namespace pweb_eCarSharing.Controllers
                         .Select(a => a)
                         .FirstOrDefault();
 
-            info.pricePerMinute = model.pricePerMinute;
-            
-            db.SaveChanges();
+            if(info != null)
+                info.pricePerMinute = model.pricePerMinute;
+
+            if (ModelState.IsValid && info != null)
+                db.SaveChanges();
+            else {
+                ViewBag.error = true;
+                return View();
+            }
 
             return RedirectToAction("AvailableVehicleList");
         }
@@ -91,6 +98,7 @@ namespace pweb_eCarSharing.Controllers
 
         public ActionResult RemVehicle()
         {
+            ViewBag.error = false;
             return View(new RemVehicleViewModel());
         }
 
@@ -106,8 +114,12 @@ namespace pweb_eCarSharing.Controllers
             if (!(oldInfo == null)){
                 db.Vehicles.Remove(oldInfo);
                 db.SaveChanges();
+
+                return RedirectToAction("AvailableVehicleList");
             }
-            return RedirectToAction("AvailableVehicleList");
+
+            ViewBag.error = true;
+            return View();
         }
 
 

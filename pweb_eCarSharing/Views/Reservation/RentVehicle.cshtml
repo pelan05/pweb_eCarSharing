@@ -31,6 +31,10 @@
                 @Html.ValidationMessageFor(model => model.predictedUseTime, "", new { @class = "text-danger" })
             </div>
         </div>
+        @if (ViewBag.error)
+        {
+            <label class="ml-3" style="color: red; font-size: 12px;">Please enter valid information</label>
+        }
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

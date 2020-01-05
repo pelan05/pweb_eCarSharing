@@ -24,6 +24,10 @@
                 @Html.ValidationMessageFor(model => model.pricePerMinute, "", new { @class = "text-danger" })
             </div>
         </div>
+        @if (ViewBag.error)
+        {
+            <label class="ml-3" style="color: red; font-size: 12px;">No changes in vehicle data</label>
+        }
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

@@ -60,10 +60,9 @@ namespace pweb_eCarSharing.Controllers
 
             if (!(oldInfo == null))
             {
-                ViewBag.error = false;
                 db.CarStations.Remove(oldInfo);
-
                 db.SaveChanges();
+
                 return RedirectToAction("CarStationList");
             }
 

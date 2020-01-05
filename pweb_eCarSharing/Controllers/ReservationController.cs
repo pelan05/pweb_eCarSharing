@@ -18,6 +18,7 @@ namespace pweb_eCarSharing.Controllers
 
         public ActionResult RentVehicle()
         {
+            ViewBag.error = false;
             return View(new NewReservationViewModel());
         }
 
@@ -44,7 +45,13 @@ namespace pweb_eCarSharing.Controllers
                         .Where(a => a.userIDstring.Equals(userID))
                         .Select(a => a.userNIBID)
                         .FirstOrDefault();
-            vehicle.inUse = true;
+
+            if(vehicle != null)
+                vehicle.inUse = true;
+            else{
+                ViewBag.error = true;
+                return View();
+            }
 
             _ = db.Reservations.Add( new Reservation
             {
@@ -55,17 +62,19 @@ namespace pweb_eCarSharing.Controllers
                 predictedUseTime = model.predictedUseTime,
                 predictedCost = (price * model.predictedUseTime)
             });
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) {
                 db.SaveChanges();
-            else
-                return View();
+                return RedirectToAction("ListRentalData");
+            }
 
-            return RedirectToAction("ListRentalData");
+            ViewBag.error = true;
+            return View();
         }
 
 
         public ActionResult RemRentalData()
         {
+            ViewBag.error = false;
             return View(new RemReservationViewModel());
         }
 
@@ -79,13 +88,16 @@ namespace pweb_eCarSharing.Controllers
                         .Where(a => a.ReservationID == model.reservationID)
                         .Select(a => a)
                         .FirstOrDefault();
-            if (!(oldInfo == null)) { 
-             
-            db.Reservations.Remove(oldInfo);
-
-            db.SaveChanges();
-
+            if (oldInfo != null) {
+                db.Reservations.Remove(oldInfo);
+                db.SaveChanges();
+            } else
+            {
+                ViewBag.error = true;
+                return View();
             }
+
+
             return RedirectToAction("ListRentalData");
         }
 
