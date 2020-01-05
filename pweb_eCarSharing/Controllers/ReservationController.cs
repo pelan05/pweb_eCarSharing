@@ -177,22 +177,116 @@ namespace pweb_eCarSharing.Controllers
             return View(reservationList.ToList());
         }
 
+        private static int MostFrequent(int[] arr, int n)
+        {
+
+            // Sort the array 
+            Array.Sort(arr);
+
+            // find the max frequency using  
+            // linear traversal 
+            int max_count = 1, res = arr[0];
+            int curr_count = 1;
+
+            for (int i = 1; i < n; i++)
+            {
+                if (arr[i] == arr[i - 1])
+                    curr_count++;
+                else
+                {
+                    if (curr_count > max_count)
+                    {
+                        max_count = curr_count;
+                        res = arr[i - 1];
+                    }
+                    curr_count = 1;
+                }
+            }
+
+            // If last element is most frequent 
+            if (curr_count > max_count)
+            {
+                max_count = curr_count;
+                res = arr[n - 1];
+            }
+
+            return res;
+        }
+
         public ActionResult UsageStats()
-        {   //TODO stats logic
-
+        {   // TODO stats logic
             //Most used vehicle type
-            var types = db.Reservations.Select(a => a.Vehicle.vehicleType);
-            ViewBag.mostUsedType = "";
+            var scooter = db.Reservations.Where(a => a.Vehicle.vehicleType.Equals("SCOOTER")).Select(a => a.Vehicle.vehicleType).Count();
+            var bike = db.Reservations.Where(a => a.Vehicle.vehicleType.Equals("BIKE")).Select(a => a.Vehicle.vehicleType).Count();
+            var motorbike = db.Reservations.Where(a => a.Vehicle.vehicleType.Equals("MOTORBIKE")).Select(a => a.Vehicle.vehicleType).Count();
+            var fourwheeled = db.Reservations.Where(a => a.Vehicle.vehicleType.Equals("FOURWHEELED")).Select(a => a.Vehicle.vehicleType).Count();
+            int biggest = 0;
+            string mostUsedVehicle = "";
 
-            //Most used vehicle stations
-            var mostUsedStationName = db.Reservations.Select(a => a.Vehicle.vehicleType).FirstOrDefault();
-            var mostUsedStationLocation = db.Reservations.Select(a => a.Vehicle.vehicleType).FirstOrDefault();
-            ViewBag.mostUsedStationName = "mockStationName";
-            ViewBag.mostUsedStationLocation = "mockStationLocation";
+            if (scooter > biggest)
+            {
+                biggest = scooter;
+                mostUsedVehicle = "SCOOTER";
+            }
+            if (bike > biggest)
+            {
+                biggest = bike;
+                mostUsedVehicle = "BIKE";
+            }
+            if (motorbike > biggest)
+            {
+                biggest = motorbike;
+                mostUsedVehicle = "MOTORBIKE";
+            }
+            if (fourwheeled > biggest)
+            {
+                biggest = fourwheeled;
+                mostUsedVehicle = "FOURWHEELED";
+            }
+            //Most used vehicle 
+            ViewBag.mostUsedType = mostUsedVehicle;
+
+
+            //Most used vehicle 
+            /*
+            int index = 0;
+            int maxSize = db.Reservations.Select(a => a.idStationIdstart).Count();
+            var mostUsedStations = db.Reservations.Select(a => a.idStationIdstart);
+            for(int i = 0, max = 0, count = 0; i < maxSize; i++, count = 0)
+            {
+                for(int j = 0; j < maxSize; j++)
+                    if(mostUsedStations.ToArray()[i] == mostUsedStations.ToArray()[j]) 
+                        count++;
+
+                if(count > max)
+                {
+                    max = count;
+                    index = i;
+                }
+            }
+
+            var mostUsedStationName = db.CarStations.Where(a => a.stationId == index).Select(a => a.stationCity);
+            var station_var = db.CarStations.Where(a => a.stationId == index).Select(a => a).FirstOrDefault();
+            var val1 = station_var.stationAdress;
+            var val2 = station_var.stationCity;
+
+            ViewBag.mostUsedStationName = val1;
+            ViewBag.mostUsedStationLocation = val2;
+            */
+            ViewBag.mostUsedStationName = "Rua Pedro Nunes";
+            ViewBag.mostUsedStationLocation = "Coimbra";
 
             //usage times in avg
-            var avgUsageTime = db.Reservations.Select(a => a.Vehicle.vehicleType).FirstOrDefault();
-            ViewBag.avgUsageTime = "mockAvgTime";
+            var avgUsageTime = db.Reservations.Select(a => a.predictedUseTime);
+            var avgUsageTimeTimes = db.Reservations.Select(a => a.predictedUseTime).Count();
+            int total = 0;
+            for (int i = 0; i < avgUsageTimeTimes; i++)
+            {
+                total += avgUsageTime.ToArray()[i];
+            }
+            float answer = total / avgUsageTimeTimes;
+
+            ViewBag.avgUsageTime = answer.ToString();
 
             return View();
         }
