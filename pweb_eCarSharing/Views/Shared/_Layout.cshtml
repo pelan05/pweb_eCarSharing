@@ -15,11 +15,13 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            @if (User.Identity.IsAuthenticated) {
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <span style="padding-left: 30px">@Html.ActionLink("Vehicles", "Vehicle", "eCarSharing")</span>
                 <span style="padding-left: 30px">@Html.ActionLink("Car Stations", "CarStation", "eCarSharing")</span>
                 <span style="padding-left: 30px">@Html.ActionLink("Reservations", "Reservation", "eCarSharing")</span>
             </div>
+            }
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown">
