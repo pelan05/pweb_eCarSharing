@@ -92,6 +92,7 @@ namespace pweb_eCarSharing.Controllers
         
         public ActionResult ChangeRentalData()
         {
+            ViewBag.error = false;
             return View(new EditReservationViewModel());
         }
 
@@ -100,13 +101,22 @@ namespace pweb_eCarSharing.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ChangeRentalData(EditReservationViewModel model)
         {
+            ViewBag.error = false;
+            if (model.ReservationID == 0
+                || model.VehicleID == 0
+                || model.idStationIdEnd == 0
+                || model.predictedUseTime == 0)
+            {
+                ViewBag.error = true;
+                return View();
+            }
+            else
+            {
 
-            var oldInfo = db.Reservations
+                var info = db.Reservations
                         .Where(a => a.ReservationID == model.ReservationID)
                         .Select(a => a)
                         .FirstOrDefault();
-
-            db.Reservations.Remove(oldInfo);
 
 
             int price = db.Vehicles
@@ -123,19 +133,18 @@ namespace pweb_eCarSharing.Controllers
                         .Select(a => a.userNIBID)
                         .FirstOrDefault();
 
-            _ = db.Reservations.Add(new Reservation
-            {
-                UserNIBID = id,
-                VehicleID = model.VehicleID,
-                idStationIdstart = stationStart,
-                idStationIdEnd = model.idStationIdEnd,
-                predictedUseTime = model.predictedUseTime,
-                predictedCost = (price * model.predictedUseTime)
-            });
-            if (ModelState.IsValid)
-                db.SaveChanges();
-            else
-                return View();
+            info.VehicleID = model.VehicleID;
+            info.idStationIdstart = stationStart;
+            info.idStationIdEnd = model.idStationIdEnd;
+            info.predictedUseTime = model.predictedUseTime;
+            info.predictedCost = (price * model.predictedUseTime);
+
+            
+                if (ModelState.IsValid)
+                    db.SaveChanges();
+                else
+                    return View();
+            }
 
             return RedirectToAction("ListRentalData");
         }

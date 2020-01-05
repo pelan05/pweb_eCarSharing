@@ -39,7 +39,10 @@
                 @Html.ValidationMessageFor(model => model.predictedUseTime, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        @if (ViewBag.error == true) 
+        {
+            <label style="color: red; font-size: 12px;">Error: Values can't be '0'</label>
+        }
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save Details" class="btn btn-success" />
