@@ -55,7 +55,10 @@ namespace pweb_eCarSharing.Controllers
                 predictedUseTime = model.predictedUseTime,
                 predictedCost = (price * model.predictedUseTime)
             });
-            db.SaveChanges();
+            if (ModelState.IsValid)
+                db.SaveChanges();
+            else
+                return View();
 
             return RedirectToAction("ListRentalData");
         }
@@ -129,7 +132,10 @@ namespace pweb_eCarSharing.Controllers
                 predictedUseTime = model.predictedUseTime,
                 predictedCost = (price * model.predictedUseTime)
             });
-            db.SaveChanges();
+            if (ModelState.IsValid)
+                db.SaveChanges();
+            else
+                return View();
 
             return RedirectToAction("ListRentalData");
         }

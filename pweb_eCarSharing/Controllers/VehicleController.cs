@@ -41,7 +41,10 @@ namespace pweb_eCarSharing.Controllers
                 pricePerMinute = model.pricePerMinute,
                 remainingBattery = model.remainingBattery
             });
-            db.SaveChanges();
+            if (ModelState.IsValid)
+                db.SaveChanges();
+            else
+                return View();
 
             return RedirectToAction("AvailableVehicleList");
         }
