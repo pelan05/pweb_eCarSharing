@@ -34,7 +34,10 @@ namespace pweb_eCarSharing.Controllers
                 stationCity = model.stationCity,
                 stationAdress = model.stationAdress
             });
-            db.SaveChanges();
+            if (ModelState.IsValid)
+                db.SaveChanges();
+            else
+                return View();
 
             return RedirectToAction("CarStationList");
         }
@@ -56,9 +59,11 @@ namespace pweb_eCarSharing.Controllers
                        .FirstOrDefault();
             if (!(oldInfo == null)){
                 db.CarStations.Remove(oldInfo);
+
                 db.SaveChanges();
+                return RedirectToAction("CarStationList");
             }
-            return RedirectToAction("CarStationList");
+            return View();
         }
 
     }

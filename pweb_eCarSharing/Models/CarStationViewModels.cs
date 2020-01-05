@@ -10,19 +10,19 @@ namespace pweb_eCarSharing.Models
     {
         [Required]
         [StringLength(15, ErrorMessage = "Length must be between 3 and 15", MinimumLength = 3)]
-        [Display(Name = "In what city is the station?")]
+        [Display(Name = "Car station location")]
         public string stationCity { get; set; }
 
         [Required]
         [StringLength(50, ErrorMessage = "Length must be between 3 and 50", MinimumLength = 3)]
-        [Display(Name = "The Adress where it is at:")]
+        [Display(Name = "Street Address")]
         public string stationAdress { get; set; }
     }
 
     public class RemCarStationViewModel
     { 
         [Required]
-        [Display(Name = "The id of the Station to remove")]
+        [Display(Name = "Station id to remove")]
         public int stationID { get; set; }
     }
 }
