@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace pweb_eCarSharing.Controllers
 {
-
+    [Authorize]
     public class ReservationController : Controller
     {
         ApplicationDbContext db = new ApplicationDbContext();
@@ -181,8 +181,8 @@ namespace pweb_eCarSharing.Controllers
         {   //TODO stats logic
 
             //Most used vehicle type
-            var mostUsedType = db.Reservations.Select(a => a.Vehicle.vehicleType).FirstOrDefault();
-            ViewBag.mostUsedType = "mockType";
+            var types = db.Reservations.Select(a => a.Vehicle.vehicleType);
+            ViewBag.mostUsedType = "";
 
             //Most used vehicle stations
             var mostUsedStationName = db.Reservations.Select(a => a.Vehicle.vehicleType).FirstOrDefault();

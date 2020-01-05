@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace pweb_eCarSharing.Controllers
 {
+    [Authorize]
     public class VehicleController : Controller
     {
 

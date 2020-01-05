@@ -9,6 +9,7 @@ using System.Web.Mvc;
 namespace pweb_eCarSharing.Controllers
 {
 
+    [Authorize]
     public class CarStationController : Controller
     {
         ApplicationDbContext db = new ApplicationDbContext();

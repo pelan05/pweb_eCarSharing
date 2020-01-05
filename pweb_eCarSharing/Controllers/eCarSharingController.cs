@@ -22,6 +22,7 @@ namespace pweb_eCarSharing.Controllers
             return View();
         }
 
+        [Authorize]
         public ActionResult Vehicle()
         {
             var userID = User.Identity.GetUserId();
@@ -29,6 +30,8 @@ namespace pweb_eCarSharing.Controllers
             ViewBag.Role = UserRole;
             return View();
         }
+
+        [Authorize]
         public ActionResult CarStation()
         {
             var userID = User.Identity.GetUserId();
@@ -36,6 +39,8 @@ namespace pweb_eCarSharing.Controllers
             ViewBag.Role = UserRole;
             return View();
         }
+
+        [Authorize]
         public ActionResult Reservation()
         {
             var userID = User.Identity.GetUserId();
