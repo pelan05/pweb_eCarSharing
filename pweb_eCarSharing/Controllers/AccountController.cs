@@ -17,6 +17,7 @@ namespace pweb_eCarSharing.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        public ApplicationDbContext db = new ApplicationDbContext();
 
         public AccountController()
         {
@@ -156,12 +157,16 @@ namespace pweb_eCarSharing.Controllers
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                    var lastuserid = db.Users.Where(a => a.UserName.Equals(model.Email)).Select(a => a.Id).FirstOrDefault();//TODO 
+                    db.UsersNib.Add(new UserNIB { NIB = model.NIB, userIDstring = lastuserid });
+                    db.SaveChanges();
 
                     return RedirectToAction("Index", "Home");
                 }
@@ -171,6 +176,21 @@ namespace pweb_eCarSharing.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+
+
+        public async void registerAtStartup(int num, string email, string pass, string nib) 
+        {
+            var user = new ApplicationUser { UserName = email, Email = email };
+            var result = await UserManager.CreateAsync(user, pass);
+            
+            var lastuserid = db.Users.Where(a => a.UserName.Equals(email)).Select(a => a.Id).FirstOrDefault();//TODO 
+            var UserNIBInfo = db.UsersNib.Where(a => a.userNIBID == num).Select(a => a).FirstOrDefault();
+            UserNIBInfo.NIB = nib;
+            UserNIBInfo.userIDstring = lastuserid;
+            db.SaveChanges();
+        }
+
+
 
         //
         // GET: /Account/ConfirmEmail

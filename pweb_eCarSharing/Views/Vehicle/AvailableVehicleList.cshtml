@@ -1,32 +1,29 @@
 ﻿@model IEnumerable<pweb_eCarSharing.Models.Vehicle>
 
 <table class="table">
+    <h2>Vehicles in Use</h2>
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.vehicleOwner)
+            <label>Vehicle Owner ID</label>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.currentStation)
+            <label>Current Station ID</label>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.vehicleType)
+            <label>Vehicle Type</label>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.isSmallSized)
+            <label>Small or Big?</label>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.isForTourism)
+            <label>Tourism or Comercial?</label>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.inUse)
+            <label>Price per Minute (PPM)</label>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.pricePerMinute)
+            <label>Vehicle's remaining battery</label>
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.remainingBattery)
-        </th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -35,25 +32,24 @@
             @Html.DisplayFor(modelItem => item.vehicleOwner)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.currentStation)
+            @Html.DisplayFor(modelItem => item.CarStation.stationId)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.vehicleType)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.isSmallSized)
+            @if (item.isSmallSized) { <label>Small</label> }
+            @if (!item.isSmallSized) { <label>Big</label>}
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.isForTourism)
+            @if (item.isForTourism) { <label>Tourism</label>}
+            @if (!item.isForTourism) {<label>Comercial</label>}
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.inUse)
+            @Html.DisplayFor(modelItem => item.pricePerMinute) €
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.pricePerMinute)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.remainingBattery)
+            @Html.DisplayFor(modelItem => item.remainingBattery) %
         </td>
     </tr>
 }

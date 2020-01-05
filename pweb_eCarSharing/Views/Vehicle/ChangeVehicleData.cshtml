@@ -5,11 +5,12 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
+        <h2>Change Vehicle Price</h2>
         <hr />
 
 
         <div class="form-group">
-            @Html.LabelFor(model => model.vehicleID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label>Target Vehicle's ID number:</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.vehicleID, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.vehicleID, "", new { @class = "text-danger" })
@@ -17,7 +18,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.pricePerMinute, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label>Vehicle's new price per minute:</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.pricePerMinute, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.pricePerMinute, "", new { @class = "text-danger" })
@@ -26,12 +27,12 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Submit New Price" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "AvailableVehicleList")
 </div>

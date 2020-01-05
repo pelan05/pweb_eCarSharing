@@ -28,10 +28,6 @@ namespace pweb_eCarSharing.Models
         public int? idStationIdEnd { get; set; }
         public virtual CarStation endCarStation { get; set; }
 
-
-
-        //em minutos
-        //TODO meter  duas variaveis para inicio e fim de reserva
         public int predictedUseTime { get; set; }
 
         public int predictedCost { get; set; }

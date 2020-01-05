@@ -136,7 +136,6 @@ namespace pweb_eCarSharing.Controllers
 
         public ActionResult ListRentalData()
         {
-            //TODO check list data
             var reservationList = from m in db.Reservations
                                   select m;
             return View(reservationList.ToList());
@@ -147,21 +146,17 @@ namespace pweb_eCarSharing.Controllers
         {   //TODO stats logic
 
             //Most used vehicle type
-            var mostUsedType = from m in db.Reservations
-                               select m.Vehicle;
+            var mostUsedType = db.Reservations.Select(a => a.Vehicle.vehicleType).FirstOrDefault();
             ViewBag.mostUsedType = "mockType";
 
             //Most used vehicle stations
-            var mostUsedStationName = from m in db.Reservations
-                                      select m.Vehicle;
-            var mostUsedStationLocation = from m in db.Reservations
-                                          select m.Vehicle;
+            var mostUsedStationName = db.Reservations.Select(a => a.Vehicle.vehicleType).FirstOrDefault();
+            var mostUsedStationLocation = db.Reservations.Select(a => a.Vehicle.vehicleType).FirstOrDefault();
             ViewBag.mostUsedStationName = "mockStationName";
             ViewBag.mostUsedStationLocation = "mockStationLocation";
 
             //usage times in avg
-            var avgUsageTime = from m in db.Reservations
-                               select m.Vehicle;
+            var avgUsageTime = db.Reservations.Select(a => a.Vehicle.vehicleType).FirstOrDefault();
             ViewBag.avgUsageTime = "mockAvgTime";
 
             return View();

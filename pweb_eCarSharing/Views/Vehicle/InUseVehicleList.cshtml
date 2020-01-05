@@ -1,61 +1,62 @@
 ﻿@model IEnumerable<pweb_eCarSharing.Models.Vehicle>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.vehicleOwner)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.currentStation)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.vehicleType)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.isSmallSized)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.isForTourism)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.inUse)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.pricePerMinute)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.remainingBattery)
-        </th>
-        <th></th>
-    </tr>
+    <table class="table">
+        <h2>Available Vehicles</h2>
+        <tr>
+            <th>
+                <label>Vehicle Owner ID</label>
+            </th>
+            <th>
+                <label>Current Station ID</label>
+            </th>
+            <th>
+                <label>Vehicle Type</label>
+            </th>
+            <th>
+                <label>Small or Big?</label>
+            </th>
+            <th>
+                <label>Tourism or Comercial?</label>
+            </th>
+            <th>
+                <label>Price per Minute (PPM)</label>
+            </th>
+            <th>
+                <label>Vehicle's remaining battery</label>
+            </th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.vehicleOwner)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.currentStation)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.vehicleType)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.isSmallSized)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.isForTourism)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.inUse)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.pricePerMinute)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.remainingBattery)
-        </td>
-    </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.vehicleOwner)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.currentStation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.vehicleType)
+                </td>
+                <td>
+                    @if (item.isSmallSized)
+                    {<label>Small</label>}
+                    @if (!item.isSmallSized)
+                    {<label>Big</label>}
+                </td>
+                <td>
+                    @if (item.isForTourism)
+                    {<label>Tourism</label>}
+                    @if (!item.isForTourism)
+                    {<label>Comercial</label>}
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pricePerMinute) €
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.remainingBattery) %
+                </td>
+            </tr>
+        }
 
-</table>
+    </table>

@@ -79,6 +79,10 @@ namespace pweb_eCarSharing.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Your NIB for financial purposes")]
+        public string NIB { get; set; }
     }
 
     public class ResetPasswordViewModel

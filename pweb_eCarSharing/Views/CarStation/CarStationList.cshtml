@@ -1,25 +1,31 @@
 ﻿@model IEnumerable<pweb_eCarSharing.Models.CarStation>
 
 <table class="table">
+    <h2>Car Station List</h2>
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.stationCity)
+            <label>Station Id</label>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.stationAdress)
+            <label>Station Adress</label>
         </th>
-        <th></th>
+        <th>
+            <label>Station City</label>
+        </th>
     </tr>
 
-@foreach (var item in Model) {
+    @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.stationCity)
+            @Html.DisplayFor(modelItem => item.stationId)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.stationAdress)
         </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.stationCity)
+        </td>
     </tr>
-}
+    }
 
 </table>

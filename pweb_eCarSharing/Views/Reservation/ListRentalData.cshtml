@@ -1,49 +1,49 @@
 ﻿@model IEnumerable<pweb_eCarSharing.Models.Reservation>
 
 <table class="table">
+    <h2>Rental Requests List</h2>
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.endCarStation.stationCity)
+            <label>Owner Id</label>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.startCarStation.stationCity)
+            <label>Vehicle Type</label>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.UserNIB.userNIBID)
+            <label>Start Car Station Id</label>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Vehicle.vehicleType)
+            <label>End Car Station Id</label>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.predictedUseTime)
+            <label>Expected rental timespan (in minutes)</label>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.predictedCost)
+            <label>Total Cost of Rental</label>
         </th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.endCarStation.stationCity)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.startCarStation.stationCity)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserNIB.userNIBID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Vehicle.vehicleType)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.predictedUseTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.predictedCost)
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.UserNIB.userNIBID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Vehicle.vehicleType)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.startCarStation.stationId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.endCarStation.stationId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.predictedUseTime)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.predictedCost)
+    </td>
+</tr>
 }
 
 </table>

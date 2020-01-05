@@ -10,7 +10,7 @@ namespace pweb_eCarSharing.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return Redirect("https://localhost:44366");
         }
 
         public ActionResult About()

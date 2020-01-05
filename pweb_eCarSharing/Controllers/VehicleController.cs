@@ -85,7 +85,6 @@ namespace pweb_eCarSharing.Controllers
 
         public ActionResult AvailableVehicleList()
         {
-            //TODO format table && add names em vez de ids
             var carList = from m in db.Vehicles
                           where m.inUse == false
                           select m;
@@ -95,7 +94,6 @@ namespace pweb_eCarSharing.Controllers
 
         public ActionResult InUseVehicleList()
         {
-            //TODO format table && add names em vez de ids
             var carList = from m in db.Vehicles
                           where m.inUse == true
                           select m;
