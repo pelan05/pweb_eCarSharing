@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<pweb_eCarSharing.Models.Vehicle>
 
     <table class="table">
-        <h2>Available Vehicles</h2>
+        <h2>Vehicles in Use</h2>
         <tr>
             <th>
-                <label>Vehicle Owner ID</label>
+                <label>Vehicle ID</label>
             </th>
             <th>
                 <label>Current Station ID</label>
@@ -30,7 +30,7 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.vehicleOwner)
+                    @Html.DisplayFor(modelItem => item.VehicleID)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.currentStation)

@@ -4,7 +4,7 @@
     <h2>Rental Requests List</h2>
     <tr>
         <th>
-            <label>Owner Id</label>
+            <label>Request Id</label>
         </th>
         <th>
             <label>Vehicle Type</label>
@@ -26,7 +26,7 @@
 @foreach (var item in Model) {
 <tr>
     <td>
-        @Html.DisplayFor(modelItem => item.UserNIB.userNIBID)
+        @Html.DisplayFor(modelItem => item.ReservationID)
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.Vehicle.vehicleType)

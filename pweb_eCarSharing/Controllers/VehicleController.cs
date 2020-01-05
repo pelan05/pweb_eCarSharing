@@ -56,28 +56,13 @@ namespace pweb_eCarSharing.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ChangeVehicleData(changeVehiclePriceViewModel model)
         {
-            var oldInfo = db.Vehicles
+            var info = db.Vehicles
                         .Where(a => a.VehicleID == model.vehicleID)
                         .Select(a => a)
                         .FirstOrDefault();
 
-            var newInfo = oldInfo;
-            newInfo.pricePerMinute = model.pricePerMinute;
-            newInfo.vehicleOwner = oldInfo.vehicleOwner;
-            newInfo.currentStation = oldInfo.currentStation;
-
-            db.Vehicles.Remove(oldInfo);
-            _ = db.Vehicles.Add(new Vehicle {
-                vehicleOwner = newInfo.vehicleOwner,
-                currentStation = newInfo.currentStation,
-                vehicleType = newInfo.vehicleType,
-                isSmallSized = newInfo.isSmallSized,
-                isForTourism = newInfo.isForTourism,
-                inUse = newInfo.inUse,
-                pricePerMinute = newInfo.pricePerMinute,
-                remainingBattery = newInfo.remainingBattery
-            });
-
+            info.pricePerMinute = model.pricePerMinute;
+            
             db.SaveChanges();
 
             return RedirectToAction("AvailableVehicleList");

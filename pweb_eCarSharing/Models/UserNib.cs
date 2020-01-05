@@ -17,6 +17,10 @@ namespace pweb_eCarSharing.Models
         [Required]
         [StringLength(21, ErrorMessage = "Length must be exactly 21 digits", MinimumLength = 21)]
         public string NIB { get; set; }
+        
+        [Required]
+        [StringLength(7, ErrorMessage = "Length must be between 1 and 7", MinimumLength = 1)]
+        public string Role { get; set; }
 
     }
 }

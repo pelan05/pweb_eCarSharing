@@ -15,7 +15,7 @@ namespace pweb_eCarSharing.Controllers
         public ActionResult CarStationList()
         {
             var carStationList = from m in db.CarStations
-                                 orderby m.stationCity
+                                 orderby m.stationId
                                  select m;
             return View(carStationList.ToList());
         }

@@ -31,6 +31,10 @@ namespace pweb_eCarSharing.Controllers
                         .Where(a => a.VehicleID == model.VehicleID)
                         .Select(a => a.pricePerMinute)
                         .FirstOrDefault();
+            var vehicle = db.Vehicles
+                        .Where(a => a.VehicleID == model.VehicleID)
+                        .Select(a => a)
+                        .FirstOrDefault();
             int? stationStart = db.Vehicles
                         .Where(a => a.VehicleID == model.VehicleID)
                         .Select(a => a.currentStation)
@@ -40,7 +44,7 @@ namespace pweb_eCarSharing.Controllers
                         .Where(a => a.userIDstring.Equals(userID))
                         .Select(a => a.userNIBID)
                         .FirstOrDefault();
-            
+            vehicle.inUse = true;
 
             _ = db.Reservations.Add( new Reservation
             {
@@ -131,16 +135,20 @@ namespace pweb_eCarSharing.Controllers
         }
 
 
-
-
-
         public ActionResult ListRentalData()
         {
-            var reservationList = from m in db.Reservations
-                                  select m;
+            var reservationList = db.Reservations.Select(a => a);
             return View(reservationList.ToList());
         }
 
+
+        public ActionResult ListUserRentalData()
+        {
+            var userIDstring = User.Identity.GetUserId();
+            int? userID = db.UsersNib.Where(a => a.userIDstring.Equals(userIDstring)).Select(a => a.userNIBID).FirstOrDefault();
+            var reservationList = db.Reservations.Where(a => a.UserNIBID == userID).Select(a => a);
+            return View(reservationList.ToList());
+        }
 
         public ActionResult UsageStats()
         {   //TODO stats logic

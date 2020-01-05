@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using pweb_eCarSharing.Models;
 
 namespace pweb_eCarSharing.Controllers
@@ -15,19 +16,31 @@ namespace pweb_eCarSharing.Controllers
         // GET: eCarSharing
         public ActionResult Main()
         {
+            var userID = User.Identity.GetUserId();
+            var UserRole = db.UsersNib.Where(a => a.userIDstring == userID).Select(a => a.Role).FirstOrDefault();
+            ViewBag.Role = UserRole;
             return View();
         }
 
         public ActionResult Vehicle()
         {
+            var userID = User.Identity.GetUserId();
+            var UserRole = db.UsersNib.Where(a => a.userIDstring == userID).Select(a => a.Role).FirstOrDefault();
+            ViewBag.Role = UserRole;
             return View();
         }
         public ActionResult CarStation()
         {
+            var userID = User.Identity.GetUserId();
+            var UserRole = db.UsersNib.Where(a => a.userIDstring == userID).Select(a => a.Role).FirstOrDefault();
+            ViewBag.Role = UserRole;
             return View();
         }
         public ActionResult Reservation()
         {
+            var userID = User.Identity.GetUserId();
+            var UserRole = db.UsersNib.Where(a => a.userIDstring == userID).Select(a => a.Role).FirstOrDefault();
+            ViewBag.Role = UserRole;
             return View();
         }
 

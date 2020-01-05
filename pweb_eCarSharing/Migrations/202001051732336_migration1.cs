@@ -46,6 +46,7 @@
                         userNIBID = c.Int(nullable: false, identity: true),
                         userIDstring = c.String(),
                         NIB = c.String(nullable: false, maxLength: 21),
+                        Role = c.String(nullable: false, maxLength: 7),
                     })
                 .PrimaryKey(t => t.userNIBID);
             

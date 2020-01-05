@@ -26,12 +26,12 @@
                 {
                     var users = new List<UserNIB>
                 {
-                    new UserNIB { userNIBID = 1, userIDstring = "", NIB = "123456789012345678901"},
-                    new UserNIB { userNIBID = 2, userIDstring = "", NIB = "123456789012345678901"},
-                    new UserNIB { userNIBID = 3, userIDstring = "", NIB = "123456789012345678901"},
-                    new UserNIB { userNIBID = 4, userIDstring = "", NIB = "123456789012345678901"},
-                    new UserNIB { userNIBID = 5, userIDstring = "", NIB = "123456789012345678901"},
-                    new UserNIB { userNIBID = 6, userIDstring = "", NIB = "123456789012345678901"}
+                    new UserNIB { userNIBID = 1, userIDstring = "", NIB = "123456789012345678901", Role = "Admin"},
+                    new UserNIB { userNIBID = 2, userIDstring = "", NIB = "123456789012345678901", Role = "Admin"},
+                    new UserNIB { userNIBID = 3, userIDstring = "", NIB = "123456789012345678901", Role = "Regular"},
+                    new UserNIB { userNIBID = 4, userIDstring = "", NIB = "123456789012345678901", Role = "Regular"},
+                    new UserNIB { userNIBID = 5, userIDstring = "", NIB = "123456789012345678901", Role = "Regular"},
+                    new UserNIB { userNIBID = 6, userIDstring = "", NIB = "123456789012345678901", Role = "Regular"}
                 };
                     context.UsersNib.AddRange(users);
                     context.SaveChanges();

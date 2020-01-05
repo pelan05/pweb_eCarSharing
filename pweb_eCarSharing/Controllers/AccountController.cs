@@ -164,8 +164,10 @@ namespace pweb_eCarSharing.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    var lastuserid = db.Users.Where(a => a.UserName.Equals(model.Email)).Select(a => a.Id).FirstOrDefault();//TODO 
-                    db.UsersNib.Add(new UserNIB { NIB = model.NIB, userIDstring = lastuserid });
+                    var lastuserid = db.Users.Where(a => a.UserName.Equals(model.Email)).Select(a => a.Id).FirstOrDefault();//adds user id and nib to UserNIBs table
+                    db.UsersNib.Add(new UserNIB { NIB = model.NIB, userIDstring = lastuserid, Role = model.Role });
+
+
                     db.SaveChanges();
 
                     return RedirectToAction("Index", "Home");

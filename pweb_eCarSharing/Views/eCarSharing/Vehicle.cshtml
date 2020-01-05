@@ -1,27 +1,40 @@
-﻿<div style="display:grid; grid-template-rows: 1fr 1fr 1fr 1fr 1fr; grid-template-columns: 1fr 1fr 1fr; grid-column-gap: 20px; grid-row-gap: 20px;">
-    <div class="jumbotron" style="grid-column: 2; grid-row: 1; text-align: center; padding: 25px 25px; margin: 0;">
+﻿@if (ViewBag.Role.Equals("Regular"))
+{
+    <div style="display:grid; grid-template-rows: 1fr; grid-template-columns: 1fr 1fr 1fr; grid-column-gap: 20px; grid-row-gap: 20px;">
+        <div class="jumbotron" style="grid-column: 2; grid-row: 1; text-align: center; padding: 25px 25px; margin: 0;">
 
-        @Html.ActionLink("List of Available Vehicles", "AvailableVehicleList", "Vehicle")
+            @Html.ActionLink("List of Available Vehicles", "AvailableVehicleList", "Vehicle")
 
+        </div>
     </div>
-    <div class="jumbotron" style="grid-column: 2; grid-row: 2; text-align: center; padding: 25px 25px; margin: 0;">
+}
+@if (ViewBag.Role.Equals("Admin"))
+{
+    <div style="display:grid; grid-template-rows: 1fr 1fr 1fr 1fr 1fr; grid-template-columns: 1fr 1fr 1fr; grid-column-gap: 20px; grid-row-gap: 20px;">
+        <div class="jumbotron" style="grid-column: 2; grid-row: 1; text-align: center; padding: 25px 25px; margin: 0;">
 
-        @Html.ActionLink("List of Rented Vehicles", "InUseVehicleList", "Vehicle")
+            @Html.ActionLink("List of Available Vehicles", "AvailableVehicleList", "Vehicle")
 
+        </div>
+        <div class="jumbotron" style="grid-column: 2; grid-row: 2; text-align: center; padding: 25px 25px; margin: 0;">
+
+            @Html.ActionLink("List of Rented Vehicles", "InUseVehicleList", "Vehicle")
+
+        </div>
+        <div class="jumbotron" style="grid-column: 2; grid-row: 3; text-align: center; padding: 25px 25px; margin: 0;">
+
+            @Html.ActionLink("Add new Vehicles", "AddVehicle", "Vehicle")
+
+        </div>
+        <div class="jumbotron" style="grid-column: 2; grid-row: 4; text-align: center; padding: 25px 25px; margin: 0;">
+
+            @Html.ActionLink("Remove Vehicle", "RemVehicle", "Vehicle")
+
+        </div>
+        <div class="jumbotron" style="grid-column: 2; grid-row: 5; text-align: center; padding: 25px 25px; margin: 0;">
+
+            @Html.ActionLink("Change Vehicle Pricing", "ChangeVehicleData", "Vehicle")
+
+        </div>
     </div>
-    <div class="jumbotron" style="grid-column: 2; grid-row: 3; text-align: center; padding: 25px 25px; margin: 0;">
-
-        @Html.ActionLink("Add new Vehicles", "AddVehicle", "Vehicle")
-
-    </div>
-    <div class="jumbotron" style="grid-column: 2; grid-row: 4; text-align: center; padding: 25px 25px; margin: 0;">
-
-        @Html.ActionLink("Remove Vehicle", "RemVehicle", "Vehicle")
-
-    </div>
-    <div class="jumbotron" style="grid-column: 2; grid-row: 5; text-align: center; padding: 25px 25px; margin: 0;">
-
-        @Html.ActionLink("Change Vehicle Pricing", "ChangeVehicleData", "Vehicle")
-
-    </div>
-</div>
+}

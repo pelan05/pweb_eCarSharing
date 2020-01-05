@@ -83,6 +83,10 @@ namespace pweb_eCarSharing.Models
         [Required]
         [Display(Name = "Your NIB for financial purposes")]
         public string NIB { get; set; }
+
+        [Required]
+        [Display(Name = "Your role in the platform")]
+        public string Role { get; set; }
     }
 
     public class ResetPasswordViewModel
